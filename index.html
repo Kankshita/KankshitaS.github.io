@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kankshita Siddhabathuni — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1f3c;--navy-mid:#1a3660;--accent:#c8a96e;--white:#ffffff;--off:#f7f8fa;--text:#1a2744;--muted:#5a6a84;--border:#dde3ed}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,31,60,0.97);backdrop-filter:blur(10px);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid rgba(200,169,110,0.15);transition:box-shadow 0.3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.3)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:17px;color:var(--white)}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;position:relative;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.hero{min-height:100vh;background:linear-gradient(150deg,#080f1e 0%,var(--navy) 50%,#1a3a6e 100%);display:flex;align-items:center;padding:80px 6% 60px;position:relative;overflow:hidden}
+.hero-bg-text{position:absolute;right:-2%;bottom:-5%;font-family:'DM Serif Display',serif;font-size:clamp(8rem,18vw,16rem);color:rgba(255,255,255,0.02);line-height:1;pointer-events:none;user-select:none;letter-spacing:-4px}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--accent)}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,6vw,4.5rem);color:var(--white);line-height:1.08;margin-bottom:1.5rem;max-width:680px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-desc{color:rgba(255,255,255,0.65);font-size:16px;line-height:1.8;max-width:540px;margin-bottom:2.5rem}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:3.5rem}
+.btn-p{background:var(--accent);color:var(--navy);padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;font-size:13px;letter-spacing:0.03em;transition:opacity 0.2s}
+.btn-p:hover{opacity:0.85}
+.btn-s{background:transparent;color:rgba(255,255,255,0.8);padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:500;font-size:13px;border:1px solid rgba(255,255,255,0.2);transition:border-color 0.2s,color 0.2s}
+.btn-s:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+.hs-number{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--accent);line-height:1;margin-bottom:4px;display:block}
+.hs-label{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.section{padding:7rem 6%}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px;margin-bottom:0.75rem}
+.section-tag::before{content:'';width:22px;height:1px;background:var(--accent)}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3.5vw,2.75rem);color:var(--navy);line-height:1.15;margin-bottom:0.75rem}
+.section-sub{color:var(--muted);max-width:520px;margin-bottom:3rem;font-size:15px;line-height:1.7}
+.about{background:var(--off)}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:start}
+.about-text p{color:var(--muted);margin-bottom:1rem;line-height:1.85;font-size:15.5px}
+.about-text p strong{color:var(--navy);font-weight:500}
+.about-accent{border-left:2px solid var(--accent);padding-left:1.25rem;font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--navy);font-style:italic;line-height:1.5;margin:1.5rem 0}
+.edu-card{border:0.5px solid var(--border);border-radius:10px;padding:1.25rem;background:var(--white);margin-bottom:12px;transition:border-color 0.2s}
+.edu-card:hover{border-color:var(--accent)}
+.edu-year{font-size:11px;color:var(--accent);font-weight:500;margin-bottom:4px;letter-spacing:0.05em}
+.edu-school{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:3px}
+.edu-degree{font-size:12.5px;color:var(--muted)}
+.bring{background:var(--white)}
+.bring-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.bring-card{border:0.5px solid var(--border);border-radius:10px;padding:1.5rem;background:var(--off);transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;cursor:default}
+.bring-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(13,31,60,0.07)}
+.bring-icon{font-size:1.4rem;margin-bottom:0.75rem}
+.bring-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:0.5rem}
+.bring-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.skills{background:var(--off)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.skill-cat{background:var(--white);border:0.5px solid var(--border);border-radius:10px;padding:1.25rem;transition:border-color 0.2s}
+.skill-cat:hover{border-color:var(--accent)}
+.skill-cat-name{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:5px}
+.skill-tag{font-size:11.5px;padding:3px 9px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);background:var(--off);transition:border-color 0.15s,color 0.15s}
+.skill-cat:hover .skill-tag{border-color:rgba(200,169,110,0.4);color:var(--text)}
+.projects{background:var(--white)}
+.projects-list{display:flex;flex-direction:column;gap:1.5rem}
+.project-card{border:0.5px solid var(--border);border-radius:12px;overflow:hidden;background:var(--off);transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(13,31,60,0.1);border-color:rgba(200,169,110,0.4)}
+.project-card.featured{border-left:3px solid var(--accent)}
+.project-inner{display:grid;grid-template-columns:1fr 2.5fr}
+.project-card.featured .project-inner{grid-template-columns:1fr 2fr}
+.project-visual{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;min-height:180px;position:relative}
+.project-year{position:absolute;top:14px;left:14px;font-size:10px;font-weight:600;letter-spacing:0.1em;color:rgba(200,169,110,0.7);text-transform:uppercase}
+.project-badge{position:absolute;top:14px;right:14px;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);color:var(--accent);font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+.project-glyph{font-family:'DM Serif Display',serif;font-size:3.5rem;color:rgba(255,255,255,0.08);line-height:1}
+.project-metrics-mini{display:flex;gap:1rem;margin-top:1rem}
+.pmm{text-align:center}
+.pmm-n{font-size:1.1rem;font-weight:600;color:var(--accent);display:block}
+.pmm-l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.06em}
+.project-body{padding:1.75rem}
+.project-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:0.6rem;line-height:1.25}
+.project-desc{font-size:13.5px;color:var(--muted);margin-bottom:1.1rem;line-height:1.65}
+.project-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.25rem}
+.ptag{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--border);color:var(--navy-mid);background:var(--white)}
+.project-links{display:flex;gap:10px}
+.plink{font-size:12px;font-weight:500;padding:7px 18px;border-radius:6px;text-decoration:none;transition:all 0.2s}
+.plink-gh{background:var(--navy);color:var(--white)}
+.plink-gh:hover{background:var(--navy-mid)}
+.experience{background:var(--off)}
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:0.5px solid var(--border)}
+.exp-item:first-child{padding-top:0}
+.exp-item:last-child{border-bottom:none}
+.exp-date{font-size:12px;color:var(--muted);font-weight:500;padding-top:3px;line-height:1.6}
+.exp-role{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:0.5rem}
+.exp-company{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
+.exp-bullets{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
+.exp-bullets li{font-size:13.5px;color:var(--muted);padding-left:16px;position:relative;line-height:1.65}
+.exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--accent);font-size:12px}
+.exp-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.etag{font-size:10.5px;padding:2px 8px;border-radius:20px;background:var(--white);border:0.5px solid var(--border);color:var(--muted)}
+.certs{background:var(--white)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.cert-card{border:0.5px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;background:var(--off);display:flex;align-items:center;gap:14px;transition:border-color 0.2s,transform 0.2s}
+.cert-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.cert-icon{width:40px;height:40px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;color:var(--accent)}
+.cert-name{font-size:13px;font-weight:500;color:var(--navy);line-height:1.4}
+.cert-issuer{font-size:11px;color:var(--muted);margin-top:2px}
+.contact{background:var(--navy)}
+.contact .section-tag{color:var(--accent)}
+.contact .section-title{color:var(--white)}
+.contact .section-sub{color:rgba(255,255,255,0.55)}
+.contact-grid{display:flex;gap:12px;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:13px 24px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500;transition:all 0.2s}
+.contact-link:hover{background:rgba(200,169,110,0.1);border-color:var(--accent);color:var(--accent)}
+footer{background:#060d1a;text-align:center;padding:1.5rem;font-size:12px;color:rgba(255,255,255,0.25)}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem}.project-inner,.project-card.featured .project-inner{grid-template-columns:1fr}.project-visual{min-height:140px}.exp-item{grid-template-columns:1fr;gap:0.5rem}.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo">K<span>.</span>Siddhabathuni</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#bring">What I bring</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Data Analyst &middot; Business Analyst &middot; ML Enthusiast</p>
+    <h1>Translating complex data into <em>decisions that move</em> the business</h1>
+    <p class="hero-desc">3+ years building end-to-end analytics platforms &mdash; from data pipelines and behavioral models to self-service dashboards that give business teams the answers they need without waiting on an analyst.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-p">View Projects</a>
+      <a href="#contact" class="btn-s">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hs-number">10M+</span><span class="hs-label">Records analyzed</span></div>
+      <div class="hero-stat"><span class="hs-number">20%</span><span class="hs-label">Accuracy improvement</span></div>
+      <div class="hero-stat"><span class="hs-number">30%</span><span class="hs-label">Overhead reduced</span></div>
+      <div class="hero-stat"><span class="hs-number">3+</span><span class="hs-label">Years experience</span></div>
+    </div>
+  </div>
+  <div class="hero-bg-text">DATA</div>
+</section>
+
+<section class="about section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="section-tag">About</p>
+        <h2 class="section-title">Analyst who thinks in business outcomes, not just queries</h2>
+        <div class="about-text">
+          <p>I build analytics infrastructure that closes the gap between raw data and business decisions. My work spans the full stack &mdash; warehouse design, SQL analytics, Python modeling, and BI dashboards &mdash; so insights reach the right people in the right format without friction.</p>
+          <blockquote class="about-accent">Where the question matters more than the tool, and the insight outlasts the dashboard.</blockquote>
+          <p>Over 3+ years I have worked at the intersection of <strong>large-scale transaction data and business operations</strong> &mdash; standardizing data sourcing across 10M+ records, engineering behavioral models that improved accuracy by 20%, and compressing reporting turnaround from 3 days to 1.5 days through automated workflows.</p>
+          <p>Most recently applying LLM tooling to unstructured data challenges &mdash; building agentic pipelines that scale across enterprise accounts with <strong>88.9% extraction accuracy</strong>. MS Business Analytics, University of Texas at Arlington, December 2025.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="section-tag">Education</p>
+        <div class="edu-card">
+          <div class="edu-year">Jan 2024 &mdash; Dec 2025</div>
+          <div class="edu-school">University of Texas at Arlington</div>
+          <div class="edu-degree">MS Business Analytics</div>
+          <div class="edu-degree" style="margin-top:4px;font-size:11.5px;">Data Science &amp; ML &middot; Cloud Computing &middot; Web Analytics &middot; Evidence-Based Storytelling</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-year">Aug 2017 &mdash; Jul 2021</div>
+          <div class="edu-school">Anurag Group of Institutions</div>
+          <div class="edu-degree">B.Tech, Electronics &amp; Communication Engineering</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bring section" id="bring">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">What I bring</p>
+      <h2 class="section-title">What comes with me to the table</h2>
+      <p class="section-sub">Beyond the tools and technologies &mdash; the thinking patterns that shape how I work.</p>
+    </div>
+    <div class="bring-grid">
+      <div class="bring-card reveal">
+        <div class="bring-icon">&#11041;</div>
+        <div class="bring-title">End-to-end ownership</div>
+        <div class="bring-desc">I do not hand off at the query layer. I build from raw data ingestion to the dashboard a stakeholder actually uses &mdash; and document it so someone else can maintain it.</div>
+      </div>
+      <div class="bring-card reveal">
+        <div class="bring-icon">&#10022;</div>
+        <div class="bring-title">Production mindset</div>
+        <div class="bring-desc">Data quality checks, schema validation, referential integrity, lineage documentation. Every project is built like it will run in production &mdash; because it should.</div>
+      </div>
+      <div class="bring-card reveal">
+        <div class="bring-icon">&#8767;</div>
+        <div class="bring-title">Business translation</div>
+        <div class="bring-desc">I ask the business question before I write the query. The output is always a recommendation with supporting evidence &mdash; not just a result that needs interpreting.</div>
+      </div>
+      <div class="bring-card reveal">
+        <div class="bring-icon">&#8853;</div>
+        <div class="bring-title">Scale-ready thinking</div>
+        <div class="bring-desc">Snowflake architecture, DirectQuery connections, augmentation methodology. Built for the volume a real business runs on &mdash; not just a notebook that works once.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills section" id="skills">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Skills</p>
+      <h2 class="section-title">Tools I work with</h2>
+      <p class="section-sub">Across the full analytics stack &mdash; from raw data to business decision.</p>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-cat">
+        <div class="skill-cat-name">BI &amp; Visualization</div>
+        <div class="skill-tags"><span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span><span class="skill-tag">DAX</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span></div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">Languages</div>
+        <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">R</span><span class="skill-tag">Excel</span></div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">Python Libraries</div>
+        <div class="skill-tags"><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">XGBoost</span><span class="skill-tag">CatBoost</span><span class="skill-tag">LightGBM</span></div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">AI &amp; NLP</div>
+        <div class="skill-tags"><span class="skill-tag">NLP</span><span class="skill-tag">LLM Integration</span><span class="skill-tag">Gemini API</span><span class="skill-tag">BERT</span></div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">Cloud &amp; Databases</div>
+        <div class="skill-tags"><span class="skill-tag">Snowflake</span><span class="skill-tag">Redshift</span><span class="skill-tag">AWS S3</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span></div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">Data Engineering</div>
+        <div class="skill-tags"><span class="skill-tag">ETL/ELT</span><span class="skill-tag">Star Schema</span><span class="skill-tag">Data Quality</span><span class="skill-tag">Lineage</span><span class="skill-tag">Alteryx</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects section" id="projects">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Projects</p>
+      <h2 class="section-title">Built for production, not just portfolio</h2>
+      <p class="section-sub">Each project targets a real business problem with a complete data engineering and analytics stack.</p>
+    </div>
+    <div class="projects-list">
+
+      <div class="project-card featured reveal">
+        <div class="project-inner">
+          <div class="project-visual">
+            <span class="project-badge">Featured</span>
+            <span class="project-year">2025</span>
+            <div class="project-glyph">&#11041;</div>
+            <div class="project-metrics-mini">
+              <div class="pmm"><span class="pmm-n">500K+</span><span class="pmm-l">Transactions</span></div>
+              <div class="pmm"><span class="pmm-n">6</span><span class="pmm-l">Tables</span></div>
+              <div class="pmm"><span class="pmm-n">3</span><span class="pmm-l">Dashboards</span></div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Card Transaction Intelligence Platform</h3>
+            <p class="project-desc">End-to-end data platform built for a US Card business team &mdash; engineering a governed Snowflake star schema, automated data quality monitoring, RFM customer scoring pipeline, and a three-page self-service Power BI dashboard. Translates 500K+ transaction records into customer segment strategy, channel risk signals, and governance-ready quality reports.</p>
+            <div class="project-tags"><span class="ptag">Snowflake</span><span class="ptag">Python</span><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">RFM Model</span><span class="ptag">Star Schema</span><span class="ptag">DirectQuery</span><span class="ptag">Data Quality</span></div>
+            <div class="project-links"><a href="https://github.com/Kankshita/card_transaction_intelligence_platform" class="plink plink-gh" target="_blank">GitHub &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-visual">
+            <span class="project-year">2024</span>
+            <div class="project-glyph">&#10022;</div>
+            <div class="project-metrics-mini">
+              <div class="pmm"><span class="pmm-n">555K+</span><span class="pmm-l">Records</span></div>
+              <div class="pmm"><span class="pmm-n">SQL</span><span class="pmm-l">Powered</span></div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Transaction Risk Profiling in Financial Data</h3>
+            <p class="project-desc">Scalable analytics model ingesting 555K+ raw transaction records &mdash; surfacing time-window abuse patterns, coordinated high-risk account clusters, and digital channel concentration risk through SQL time-series analysis, Python clustering, and Power BI dashboards.</p>
+            <div class="project-tags"><span class="ptag">SQL</span><span class="ptag">PostgreSQL</span><span class="ptag">Python</span><span class="ptag">Power BI</span><span class="ptag">ETL</span><span class="ptag">Behavioral Clustering</span></div>
+            <div class="project-links">
+              <!-- UPDATE GITHUB LINK WHEN REPO IS READY -->
+              <a href="https://github.com/Kankshita" class="plink plink-gh" target="_blank">GitHub &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div class="project-visual">
+            <span class="project-year">2024</span>
+            <div class="project-glyph">&#8767;</div>
+            <div class="project-metrics-mini">
+              <div class="pmm"><span class="pmm-n">MAE</span><span class="pmm-l">237.4</span></div>
+              <div class="pmm"><span class="pmm-n">4</span><span class="pmm-l">Models</span></div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">U.S. GDP Forecasting with Macroeconomic Variables</h3>
+            <p class="project-desc">5-year GDP forecast comparing ARIMA, ARIMAX, VAR, and TSLM models in R. Achieved lowest out-of-sample forecasting error (MAE 237.4, RMSE 266.9) with ARIMAX integrating unemployment, CPI, federal funds rate, government spending, and S&amp;P 500 as a forward-looking sentiment signal.</p>
+            <div class="project-tags"><span class="ptag">R</span><span class="ptag">ARIMA</span><span class="ptag">ARIMAX</span><span class="ptag">VAR</span><span class="ptag">Time Series</span><span class="ptag">Forecasting</span></div>
+            <div class="project-links">
+              <!-- UPDATE GITHUB LINK WHEN REPO IS READY -->
+              <a href="https://github.com/Kankshita" class="plink plink-gh" target="_blank">GitHub &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD NEW PROJECT HERE -->
+
+    </div>
+  </div>
+</section>
+
+<section class="experience section" id="experience">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Experience</p>
+      <h2 class="section-title">Where the work was done</h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-date">Sep 2024<br>Mar 2025</div>
+        <div>
+          <div class="exp-company">SEAR Lab &middot; UT Arlington</div>
+          <div class="exp-role">Data Analyst</div>
+          <ul class="exp-bullets">
+            <li>Scaled agentic data pipeline from single client to 6+ enterprise accounts using Gemini LLM, Playwright, and BeautifulSoup across structured and unstructured data sources</li>
+            <li>Achieved 85.7% retrieval and 88.9% extraction accuracy by defining and tracking core product health metrics across text, image, and hybrid document types</li>
+            <li>Delivered structured analytical outputs in dual formats (Excel + JSON) surfaced through Power BI dashboards for real-time client visibility</li>
+            <li>Engineered modular extraction framework designed for extensibility with roadmap documentation ensuring continuity for successor teams</li>
+          </ul>
+          <div class="exp-tags"><span class="etag">Python</span><span class="etag">Gemini LLM</span><span class="etag">Playwright</span><span class="etag">Power BI</span><span class="etag">BeautifulSoup</span></div>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-date">Jun 2021<br>Dec 2023</div>
+        <div>
+          <div class="exp-company">Tata Consultancy Services</div>
+          <div class="exp-role">Data Analyst</div>
+          <ul class="exp-bullets">
+            <li>Standardized data sourcing across 10M+ transaction records, translating stakeholder requirements into SRDs and BRDs aligning investigations, operations, and compliance teams</li>
+            <li>Improved report accuracy by ~18% through SQL and Excel-based validation and reconciliation frameworks across monitoring pipelines</li>
+            <li>Drove ~20% improvement in transaction validation accuracy through SQL pattern analysis (CTEs, window functions) and Python behavioral clustering</li>
+            <li>Reduced manual investigation overhead by ~30% through Tableau dashboards tracking $500K+ across 500+ cases and 800+ merchants</li>
+            <li>Compressed reporting turnaround from ~3 days to ~1.5 days by overhauling recurring data workflows in SQL, Alteryx, and Excel</li>
+          </ul>
+          <div class="exp-tags"><span class="etag">SQL</span><span class="etag">Python</span><span class="etag">Tableau</span><span class="etag">Redshift</span><span class="etag">AWS S3</span><span class="etag">Alteryx</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="certs section" id="certs">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Certifications</p>
+      <h2 class="section-title">Credentials</h2>
+    </div>
+    <div class="cert-grid reveal">
+      <div class="cert-card">
+        <div class="cert-icon">&#9889;</div>
+        <div><div class="cert-name">AWS Amazon Redshift Primer</div><div class="cert-issuer">Amazon Web Services</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">&#10022;</div>
+        <div><div class="cert-name">Tableau Business Intelligence Analyst Professional</div><div class="cert-issuer">Tableau</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">&#11041;</div>
+        <div><div class="cert-name">Google Data Analytics Professional</div><div class="cert-issuer">Google</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact section" id="contact">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Contact</p>
+      <h2 class="section-title">Let's connect</h2>
+      <p class="section-sub">Open to Data Analyst and Risk Analytics roles. MS Business Analytics, University of Texas at Arlington.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <a href="mailto:kankshitas2k@gmail.com" class="contact-link">&#9993; kankshitas2k@gmail.com</a>
+      <a href="tel:+19453854381" class="contact-link">&#9990; 945-385-4381</a>
+      <a href="https://github.com/Kankshita" class="contact-link" target="_blank">&#9671; github.com/Kankshita</a>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2025 Kankshita Siddhabathuni &middot; Built with purpose, not a template.</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+reveals.forEach(r => observer.observe(r));
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id'); });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+}, { passive: true });
+</script>
+</body>
+</html>
